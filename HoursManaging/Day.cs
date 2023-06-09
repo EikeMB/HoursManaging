@@ -24,6 +24,7 @@ namespace HoursManaging
             TotalMinutes = 0;
             
         }
+        #region properties
 
         public DateTime StartTime
         {
@@ -110,6 +111,6 @@ namespace HoursManaging
                 }
             }
         }
-
+        #endregion
     }
 }
