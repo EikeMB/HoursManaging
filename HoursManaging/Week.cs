@@ -11,6 +11,13 @@ namespace HoursManaging
         private DateTime startDate;
         private DateTime endDate;
 
+        
+        public Week(DateTime startDate)
+        {
+            StartDate = startDate;
+            WeeklyHours = 35;
+            Days = new List<Day>(7);
+        }
         #region properties
         public double WeeklyHours { get; set; }
         public List<Day> Days { get; set; }
@@ -48,16 +55,16 @@ namespace HoursManaging
         {
             get
             {
-                if(WeeklyHours - Hours > 1)
+                if (WeeklyHours - Hours > 1)
                 {
-                    if(MissingMinutes > 0)
+                    if (MissingMinutes > 0)
                     {
                         return WeeklyHours - Hours - 1;
                     }
                     return WeeklyHours - Hours;
                 }
                 return 0;
-                
+
             }
         }
 
@@ -65,7 +72,7 @@ namespace HoursManaging
         {
             get
             {
-                if(WeeklyHours - Hours > 0)
+                if (WeeklyHours - Hours > 0)
                 {
                     return 60 - Minutes;
                 }
@@ -77,13 +84,6 @@ namespace HoursManaging
         }
 
         #endregion
-        public Week(DateTime startDate)
-        {
-            StartDate = startDate;
-            WeeklyHours = 35;
-            Days = new List<Day>(7);
-        }
-
         public DateTime StartDate
         {
             get
