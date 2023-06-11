@@ -19,9 +19,6 @@ namespace HoursManaging
         {
             StartTime = startTime;
             EndTime = endTime;
-            BreakTime = 0;
-            TotalHours = 0;
-            TotalMinutes = 0;
             
         }
         #region properties
@@ -68,27 +65,18 @@ namespace HoursManaging
         {
             get
             {
-                return this.totalHours;
-            }
-
-            set
-            {
                 double hours = ((EndTime - StartTime).TotalHours - breakTime);
-                this.totalHours = Math.Floor(hours);
+                return Math.Floor(hours);
             }
+            
         }
 
         public double TotalMinutes
         {
             get
             {
-                return this.totalMinutes;
-            }
-            set
-            {
                 double hours = ((EndTime - StartTime).TotalHours - breakTime);
-
-                this.totalMinutes = (hours - TotalHours) * 60;
+                return (hours - TotalHours) * 60;
             }
         }
 
@@ -96,18 +84,14 @@ namespace HoursManaging
         {
             get
             {
-               return this.breakTime;
-            }
-            set
-            {
                 double hours = (EndTime - StartTime).TotalHours;
                 if (hours > 7)
                 {
-                    this.breakTime = 1;
+                    return 1;
                 }
                 else
                 {
-                    this.breakTime = 0.5;
+                    return 0.5;
                 }
             }
         }

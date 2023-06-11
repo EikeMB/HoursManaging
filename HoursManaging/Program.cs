@@ -6,7 +6,7 @@ namespace HoursManaging
     {
         static void Main(string[] args)
         {
-            DateTime startMonday = new DateTime(2023, 6, 5, 9, 15, 0);
+            DateTime startMonday = new DateTime(2023, 6, 5, 9, 0, 0);
             DateTime endMonday = new DateTime(2023, 6, 5, 17, 15, 0);
             Day monday = new Day(startMonday, endMonday);
             DateTime startTuesday = new DateTime(2023, 6, 6, 9, 15, 0);
@@ -19,18 +19,6 @@ namespace HoursManaging
             DateTime endThur = new DateTime(2023, 6, 8, 15, 30, 0);
             Day thur = new Day(startThur, endThur);
 
-            Week weekJune5 = new Week(new DateTime(2023, 6, 5));
-
-            weekJune5.AddDay(monday);
-            weekJune5.AddDay(tuesday);
-            weekJune5.AddDay(wed);
-            weekJune5.AddDay(thur);
-
-            Console.WriteLine("start: " + weekJune5.StartDate);
-            Console.WriteLine("Hours: " + weekJune5.Hours);
-            Console.WriteLine("Minutes: " + weekJune5.Minutes);
-            Console.WriteLine("Missing hours: " + weekJune5.MissingHours);
-            Console.WriteLine("Missing minutes: " + weekJune5.MissingMinutes);
             
 
         }
