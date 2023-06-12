@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HoursManaging
 {
-    internal class Day
+    public class Day
     {
         private DateTime startTime;
         private DateTime endTime;

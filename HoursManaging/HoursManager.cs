@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace HoursManaging
 {
-    internal class HoursManager
+    public class HoursManager
     {
         private Days _days;
         public Days Days => _days;

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HoursManaging
 {
-    internal class Days
+    public class Days
     {
         private SQLiteConnection conn;
 
