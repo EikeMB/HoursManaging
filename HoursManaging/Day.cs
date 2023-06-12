@@ -10,9 +10,6 @@ namespace HoursManaging
     {
         private DateTime startTime;
         private DateTime endTime;
-        private double totalHours;
-        private double totalMinutes;
-        private double breakTime;
 
 
         public Day(DateTime startTime, DateTime endTime)
@@ -65,7 +62,8 @@ namespace HoursManaging
         {
             get
             {
-                double hours = ((EndTime - StartTime).TotalHours - breakTime);
+                double totalHours = (EndTime - StartTime).TotalHours;
+                double hours = ((EndTime - StartTime).TotalHours - BreakTime);
                 return Math.Floor(hours);
             }
             
@@ -75,7 +73,7 @@ namespace HoursManaging
         {
             get
             {
-                double hours = ((EndTime - StartTime).TotalHours - breakTime);
+                double hours = ((EndTime - StartTime).TotalHours - BreakTime);
                 return (hours - TotalHours) * 60;
             }
         }

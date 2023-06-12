@@ -15,7 +15,7 @@ namespace HoursManaging
         public Days Days => _days;
         public HoursManager(string hoursFileName, bool isNewDatabase = false)
         {
-            if(File.Exists(hoursFileName) && !isNewDatabase)
+            if (File.Exists(hoursFileName) && !isNewDatabase)
             {
                 Database.openExistingDatabase(hoursFileName);
             }
@@ -47,25 +47,24 @@ namespace HoursManaging
 
         public List<Day> GetDays(DateTime? start, DateTime? end)
         {
-            DateTime dateTime = start ?? new DateTime(1900, 1, 1);
-            DateTime dateTime2 = end ?? new DateTime(2500, 1, 1);
+            DateTime dateTime = start ?? new DateTime(1, 1, 1900);
+            DateTime dateTime2 = end ?? new DateTime(1, 1, 2500);
 
-            string text = "select start, end, hours, minutes, breakTime from days where start >= @dateTime and end <= @dateTime2";
+            string text = "select start, end, hours, minutes, breakTime from days where start >= @dateTime and end <= @dateTime2 order by start";
 
             SQLiteCommand cmd = new SQLiteCommand(Database.dbConnection);
             cmd.CommandText = text;
-            cmd.Parameters.AddWithValue("@dateTime", dateTime.ToString("dd/MM/yyyy h:mm tt"));
-            cmd.Parameters.AddWithValue("@dateTime2", dateTime2.ToString("dd/MM/yyyy h:mm tt"));
+            cmd.Parameters.AddWithValue("@dateTime", dateTime.ToString("dd/MM/yyyy HH:mm"));
+            cmd.Parameters.AddWithValue("@dateTime2", dateTime2.ToString("dd/MM/yyyy HH:mm"));
             SQLiteDataReader reader = cmd.ExecuteReader();
             List<Day> days = new List<Day>();
 
             while (reader.Read())
             {
-                while (reader.Read())
-                {
-                    Day day = new Day(DateTime.ParseExact(reader.GetString(0), "f", CultureInfo.InvariantCulture), DateTime.ParseExact(reader.GetString(1), "f", CultureInfo.InvariantCulture));
-                    days.Add(day);
-                }
+                string startTime = reader.GetString(0);
+                string endTime = reader.GetString(1);
+                Day day = new Day(DateTime.ParseExact(startTime, "dd/MM/yyyy HH:mm", CultureInfo.CurrentCulture), DateTime.ParseExact(endTime, "dd/MM/yyyy HH:mm", CultureInfo.CurrentCulture));
+                days.Add(day);
             }
             return days;
         }
