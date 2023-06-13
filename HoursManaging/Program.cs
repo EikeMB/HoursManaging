@@ -6,7 +6,7 @@ namespace HoursManaging
     {
         static void Main(string[] args)
         {
-            HoursManager manager = new HoursManager("./AQVA2023.db", false);
+            HoursManager manager = new HoursManager("./AQVA2023.db", true);
             DateTime startMonday = new DateTime(2023, 6, 5, 9, 0, 0);
             DateTime endMonday = new DateTime(2023, 6, 5, 17, 15, 0);
             DateTime startTuesday = new DateTime(2023, 6, 6, 9, 15, 0);

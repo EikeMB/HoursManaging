@@ -7,4 +7,14 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\HoursManaging\HoursManaging.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="HoursManaging">
+      <HintPath>..\HoursManaging\bin\Debug\net6.0\HoursManaging.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
