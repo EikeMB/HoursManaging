@@ -17,7 +17,18 @@
         </Grid.RowDefinitions>
 
         <ToolBar Grid.ColumnSpan="2">
-            <Button>File</Button>
+            <Button>Open</Button>
+            <Button>Save</Button>
+            <Button>Save As</Button>
         </ToolBar>
+
+        <StackPanel Grid.Row="1">
+            <DatePicker></DatePicker>
+            <DatePicker></DatePicker>
+
+            <Button>Add Hours</Button>
+        </StackPanel>
+
+        <DataGrid Grid.Row="1" Grid.Column="1"></DataGrid>
     </Grid>
 </Window>
