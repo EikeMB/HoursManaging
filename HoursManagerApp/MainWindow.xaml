@@ -26,6 +26,8 @@
             <DatePicker></DatePicker>
             <DatePicker></DatePicker>
 
+            <CheckBox>Weekly</CheckBox>
+
             <Button>Add Hours</Button>
         </StackPanel>
 
