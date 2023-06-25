@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HoursManaging
 {
-    internal class DaysByWeek
+    public class DaysByWeek
     {
         public DateTime Week { get; set; }
         public List<Day> Days { get; set; }

@@ -69,5 +69,49 @@ namespace HoursManaging
             return days;
         }
 
+        public List<DaysByWeek> GetDaysByWeek(DateTime? start, DateTime? end)
+        {
+            DateTime dateTime = start ?? new DateTime(1, 1, 1900);
+            DateTime dateTime2 = end ?? new DateTime(1, 1, 2500);
+
+            string text = "select start, sum(hours), sum(minutes) from days where start >= @dateTime and end <= @dateTime2 group by strftime('%W',start) order by start";
+            SQLiteCommand cmd = new SQLiteCommand(Database.dbConnection);
+            cmd.CommandText = text;
+            cmd.Parameters.AddWithValue("@dateTime", dateTime.ToString("dd/MM/yyyy HH:mm"));
+            cmd.Parameters.AddWithValue("@dateTime2", dateTime2.ToString("dd/MM/yyyy HH:mm"));
+            SQLiteDataReader reader = cmd.ExecuteReader();
+            List<DaysByWeek> daysByWeeks = new List<DaysByWeek>();
+            while(reader.Read())
+            {
+                string startTime = reader.GetString(0);
+                double hours = reader.GetDouble(1);
+                double minutes = reader.GetDouble(2);
+
+                if(minutes >= 60)
+                {
+                    hours += Math.Floor(minutes / 60);
+                    minutes = minutes % 60;
+                }
+
+                DaysByWeek week = new DaysByWeek();
+                week.TotalHours = hours;
+                week.TotalMinutes = minutes;
+                week.Week = DateTime.ParseExact(startTime, "dd/MM/yyyy HH:mm", CultureInfo.CurrentCulture);
+
+                DateTime startDate = DateTime.ParseExact(startTime, "dd/MM/yyyy HH:mm", CultureInfo.CurrentCulture);
+                DayOfWeek dayOfWeek = startDate.DayOfWeek;
+
+                DateTime endDate = startDate.AddDays(7-(int)dayOfWeek);
+
+                week.Days = GetDays(startDate, endDate);
+
+                daysByWeeks.Add(week);
+
+            }
+
+            return daysByWeeks;
+
+        }
+
     }
 }

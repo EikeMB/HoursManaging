@@ -31,6 +31,6 @@
             <Button>Add Hours</Button>
         </StackPanel>
 
-        <DataGrid Grid.Row="1" Grid.Column="1"></DataGrid>
+        <DataGrid x:Name="DataGrid" Grid.Row="1" Grid.Column="1"></DataGrid>
     </Grid>
 </Window>
