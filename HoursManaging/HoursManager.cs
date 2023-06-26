@@ -47,8 +47,8 @@ namespace HoursManaging
 
         public List<Day> GetDays(DateTime? start, DateTime? end)
         {
-            DateTime dateTime = start ?? new DateTime(1, 1, 1900);
-            DateTime dateTime2 = end ?? new DateTime(1, 1, 2500);
+            DateTime dateTime = start ?? new DateTime(1900, 1, 1, 0,0,0);
+            DateTime dateTime2 = end ?? new DateTime(2500, 1, 1, 0, 0, 0);
 
             string text = "select start, end, hours, minutes, breakTime from days where start >= @dateTime and end <= @dateTime2 order by start";
 

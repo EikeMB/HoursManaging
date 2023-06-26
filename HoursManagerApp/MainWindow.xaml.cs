@@ -21,12 +21,25 @@ namespace HoursManagerApp
     /// </summary>
     public partial class MainWindow : Window, ViewInterface
     {
+
+        private string? fileName = "";
+        private string? folderName = "";
+
+        private Presenter presenter;
         public MainWindow()
         {
             InitializeComponent();
-            
+            ShowMenu();
         }
 
+
+        private void ShowMenu()
+        {
+            Menu menuWindow = new Menu(this, fileName, folderName, presenter);
+
+            menuWindow.ShowDialog();
+
+        }
         public void DisplayError(string error)
         {
             System.Media.SoundPlayer player = new System.Media.SoundPlayer("../../../../ErrorSound.wav");

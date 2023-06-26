@@ -18,7 +18,7 @@ namespace HoursManagerApp
             model = new HoursManager(fileName, newDB);
         }
 
-        public void processGetDays(DateTime start, DateTime end, bool weekFilter)
+        public void processGetDays(DateTime? start, DateTime? end, bool weekFilter)
         {
             if (weekFilter)
             {
