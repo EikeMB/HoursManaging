@@ -32,7 +32,6 @@ namespace HoursManagerApp
             LoadAppData();
             ShowMenu();
             getFilters();
-
         }
 
 
@@ -63,7 +62,7 @@ namespace HoursManagerApp
         }
         public void DisplayError(string error)
         {
-            System.Media.SoundPlayer player = new System.Media.SoundPlayer("../../../../ErrorSound.wav");
+            System.Media.SoundPlayer player = new System.Media.SoundPlayer("../../../ErrorSound.wav");
             player.Play();
             MessageBox.Show(error, "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
@@ -128,5 +127,21 @@ namespace HoursManagerApp
         {
             presenter.processGetDays(date1.SelectedDate, date2.SelectedDate, (bool)weekly.IsChecked);
         }
+
+        private void date1_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            getFilters();
+        }
+
+        private void date2_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            getFilters();
+        }
+
+        private void weekly_Click(object sender, RoutedEventArgs e)
+        {
+            getFilters();
+        }
+
     }
 }

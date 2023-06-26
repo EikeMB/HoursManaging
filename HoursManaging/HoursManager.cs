@@ -71,8 +71,8 @@ namespace HoursManaging
 
         public List<DaysByWeek> GetDaysByWeek(DateTime? start, DateTime? end)
         {
-            DateTime dateTime = start ?? new DateTime(1, 1, 1900);
-            DateTime dateTime2 = end ?? new DateTime(1, 1, 2500);
+            DateTime dateTime = start ?? new DateTime(1900, 1, 1);
+            DateTime dateTime2 = end ?? new DateTime(2500, 1, 1);
 
             string text = "select start, sum(hours), sum(minutes) from days where datetime(start) >= @dateTime and datetime(end) <= @dateTime2 group by strftime('%W',start) order by start";
             SQLiteCommand cmd = new SQLiteCommand(Database.dbConnection);
