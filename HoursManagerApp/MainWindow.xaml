@@ -16,16 +16,18 @@
             <RowDefinition Height="4*"/>
         </Grid.RowDefinitions>
 
+        <Border Margin="5" BorderBrush="Black" BorderThickness="1" Grid.Row="1">
+            <StackPanel >
 
-        <StackPanel Grid.Row="1">
-            <DatePicker x:Name="date1" SelectedDateChanged="date1_SelectedDateChanged"></DatePicker>
-            <DatePicker x:Name="date2" SelectedDateChanged="date2_SelectedDateChanged"></DatePicker>
+                <DatePicker Margin="10" x:Name="date1" SelectedDateChanged="date1_SelectedDateChanged"></DatePicker>
+                <DatePicker Margin="10" x:Name="date2" SelectedDateChanged="date2_SelectedDateChanged"></DatePicker>
 
-            <CheckBox x:Name="weekly" Click="weekly_Click">Weekly</CheckBox>
+                <CheckBox x:Name="weekly" Click="weekly_Click" Margin="10">Weekly</CheckBox>
 
-            <Button x:Name="AddDay" Click="AddDay_Click">Add Hours</Button>
-        </StackPanel>
+                <Button x:Name="AddDay" Click="AddDay_Click" Margin="10">Add Hours</Button>
 
-        <DataGrid x:Name="DataGrid" Grid.Row="1" Grid.Column="1"></DataGrid>
+            </StackPanel>
+        </Border>
+        <DataGrid x:Name="DataGrid" Grid.Row="1" Grid.Column="1" Margin="10"></DataGrid>
     </Grid>
 </Window>

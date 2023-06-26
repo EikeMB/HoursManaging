@@ -56,5 +56,33 @@ namespace HoursManagerApp
         {
             this.Close();
         }
+
+        private void hour_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox box = sender as TextBox;
+
+            box.Text = string.Empty;
+        }
+
+        private void minute_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox box = sender as TextBox;
+
+            box.Text = string.Empty;
+        }
+
+        private void hour2_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox box = sender as TextBox;
+
+            box.Text = string.Empty;
+        }
+
+        private void minute2_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox box = sender as TextBox;
+
+            box.Text = string.Empty;
+        }
     }
 }

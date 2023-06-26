@@ -18,13 +18,13 @@
 
         <WrapPanel Margin="5" Grid.Row="1">
             <TextBlock Margin="5">StartTime:</TextBlock>
-            <TextBox x:Name="hour" Width="25" Margin="5" Text="HH"></TextBox>
+            <TextBox x:Name="hour" Width="25" Margin="5" Text="HH" GotFocus="hour_GotFocus"></TextBox>
             <TextBlock Margin="2">:</TextBlock>
-            <TextBox x:Name="minute" Width="25" Margin="5" Text="MM"></TextBox>
+            <TextBox x:Name="minute" Width="25" Margin="5" Text="MM" GotFocus="minute_GotFocus"></TextBox>
             <TextBlock Margin="5">EndTime:</TextBlock>
-            <TextBox x:Name="hour2" Width="25" Margin="5" Text="HH"></TextBox>
+            <TextBox x:Name="hour2" Width="25" Margin="5" Text="HH" GotFocus="hour2_GotFocus"></TextBox>
             <TextBlock Margin="2">:</TextBlock>
-            <TextBox x:Name="minute2" Width="25" Margin="5" Text="MM"></TextBox>
+            <TextBox x:Name="minute2" Width="25" Margin="5" Text="MM" GotFocus="minute2_GotFocus"></TextBox>
         </WrapPanel>
 
         <WrapPanel Grid.Row="2" Margin="5" HorizontalAlignment="Center">
