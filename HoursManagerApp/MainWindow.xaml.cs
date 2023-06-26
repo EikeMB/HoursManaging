@@ -29,10 +29,29 @@ namespace HoursManagerApp
         public MainWindow()
         {
             InitializeComponent();
+            LoadAppData();
             ShowMenu();
         }
 
 
+        private void LoadAppData()
+        {
+            try
+            {
+                var directory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                string path = System.IO.Path.Combine(directory, "TicTacToeWPF", "FolderPath.txt");
+                if (System.IO.File.Exists(path))
+                {
+                    string contents = System.IO.File.ReadAllText(path);
+
+                    folderName = contents;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error");
+            }
+        }
         private void ShowMenu()
         {
             Menu menuWindow = new Menu(this, fileName, folderName, presenter);
