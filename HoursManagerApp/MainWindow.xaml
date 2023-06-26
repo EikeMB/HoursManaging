@@ -28,6 +28,7 @@
 
             </StackPanel>
         </Border>
-        <DataGrid x:Name="DataGrid" Grid.Row="1" Grid.Column="1" Margin="10"></DataGrid>
+        <DataGrid x:Name="DataGrid" Grid.Row="1" Grid.Column="1" Margin="10"
+                  AutoGenerateColumns="False"></DataGrid>
     </Grid>
 </Window>
