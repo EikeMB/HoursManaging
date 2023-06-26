@@ -22,15 +22,17 @@ namespace HoursManagerApp
     public partial class MainWindow : Window, ViewInterface
     {
 
-        private string? fileName = "";
-        private string? folderName = "";
+        internal string fileName = "";
+        internal string folderName = "";
 
-        private Presenter presenter;
+        internal Presenter presenter;
         public MainWindow()
         {
             InitializeComponent();
             LoadAppData();
             ShowMenu();
+            getFilters();
+
         }
 
 
@@ -54,7 +56,7 @@ namespace HoursManagerApp
         }
         private void ShowMenu()
         {
-            Menu menuWindow = new Menu(this, fileName, folderName, presenter);
+            Menu menuWindow = new Menu(this, ref fileName, ref folderName, ref presenter);
 
             menuWindow.ShowDialog();
 
@@ -95,13 +97,13 @@ namespace HoursManagerApp
             var column1 = new DataGridTextColumn();
             column1.Header = "Start Time";
             column1.Binding = new System.Windows.Data.Binding("StartTime");
-            column1.Binding.StringFormat = "{dd/MM/yyyy HH:mm}";
+            column1.Binding.StringFormat = "yyyy/MM/dd HH:mm";
             DataGrid.Columns.Add(column1);
 
             var column2 = new DataGridTextColumn();
             column2.Header = "End Time";
             column2.Binding = new System.Windows.Data.Binding("EndTime");
-            column2.Binding.StringFormat = "{dd/MM/yyyy HH:mm}";
+            column2.Binding.StringFormat = "yyyy/MM/dd HH:mm";
             DataGrid.Columns.Add(column2);
 
             var column3 = new DataGridTextColumn();
@@ -113,6 +115,18 @@ namespace HoursManagerApp
             column4.Header = "Total Minutes";
             column4.Binding = new System.Windows.Data.Binding("TotalMinutes");
             DataGrid.Columns.Add(column4);
+        }
+
+        private void AddDay_Click(object sender, RoutedEventArgs e)
+        {
+            AddDay addWindow = new AddDay(this, ref fileName, ref folderName, ref presenter);
+            addWindow.ShowDialog();
+
+        }
+
+        public void getFilters()
+        {
+            presenter.processGetDays(date1.SelectedDate, date2.SelectedDate, (bool)weekly.IsChecked);
         }
     }
 }

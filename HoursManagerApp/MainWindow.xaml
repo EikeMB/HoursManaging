@@ -23,12 +23,12 @@
         </ToolBar>
 
         <StackPanel Grid.Row="1">
-            <DatePicker></DatePicker>
-            <DatePicker></DatePicker>
+            <DatePicker x:Name="date1"></DatePicker>
+            <DatePicker x:Name="date2"></DatePicker>
 
-            <CheckBox>Weekly</CheckBox>
+            <CheckBox x:Name="weekly">Weekly</CheckBox>
 
-            <Button>Add Hours</Button>
+            <Button x:Name="AddDay" Click="AddDay_Click">Add Hours</Button>
         </StackPanel>
 
         <DataGrid x:Name="DataGrid" Grid.Row="1" Grid.Column="1"></DataGrid>

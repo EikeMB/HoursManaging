@@ -25,14 +25,16 @@ namespace HoursManagerApp
         private string? fileName = "";
         private string? folderName = "";
         private Presenter pr;
+        private MainWindow window;
         private ViewInterface view;
-        public Menu(ViewInterface view, string? fileName, string? folderName, Presenter pr)
+        public Menu(MainWindow view, ref string? fileName, ref string? folderName, ref Presenter pr)
         {
             InitializeComponent();
+            this.window = view;
             this.fileName = fileName;
             this.folderName = folderName;
             this.pr = pr;
-            this.view = view;
+            this.view = (ViewInterface)view;
         }
 
         private void BTN_newDB_Click(object sender, RoutedEventArgs e)
@@ -58,14 +60,12 @@ namespace HoursManagerApp
                 {
                     File.WriteAllText(fileName, "");
                     MessageBox.Show("New DB file has been created", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                    pr = new Presenter(view, fileName, true);
-
+                    this.pr = new Presenter(view, fileName, true);
+                    this.window.presenter = this.pr;
                     folderName = System.IO.Path.GetDirectoryName(fileName);
 
                     WriteAppData();
-                    pr.processGetDays(null, null, false);
                     this.Close();
-
 
                 }
                 catch (Exception ex)
@@ -97,8 +97,8 @@ namespace HoursManagerApp
                 folderName = System.IO.Path.GetDirectoryName(dialog.FileName);
                 WriteAppData();
 
-                pr = new Presenter(view, fileName, false);
-                pr.processGetDays(null, null, false);
+                this.pr = new Presenter(view, fileName, false);
+                this.window.presenter = this.pr;
                 this.Close();
 
             }

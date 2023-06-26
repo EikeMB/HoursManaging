@@ -32,6 +32,21 @@ namespace HoursManagerApp
             }
         }
 
+        public void processAdd(DateTime start, DateTime end)
+        {
+            try
+            {
+                model.Days.Add(start, end);
+            }
+            catch (Exception e)
+            {
+
+                view.DisplayError(e.Message);
+            }
+
+        
+        }
+
         
     }
 }

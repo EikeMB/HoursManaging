@@ -13,7 +13,7 @@ namespace HoursManagerApp
         public void SetupDataGridDefault(List<Day> days);
         public void SetupDataGridByWeek(List<DaysByWeek> daysByWeeks);
 
-
+        public void getFilters();
         
     }
 }

@@ -50,12 +50,12 @@ namespace HoursManaging
             DateTime dateTime = start ?? new DateTime(1900, 1, 1, 0,0,0);
             DateTime dateTime2 = end ?? new DateTime(2500, 1, 1, 0, 0, 0);
 
-            string text = "select start, end, hours, minutes, breakTime from days where start >= @dateTime and end <= @dateTime2 order by start";
+            string text = "select start, end, hours, minutes, breakTime from days where datetime(start) >= @dateTime and datetime(end) <= @dateTime2 order by start";
 
             SQLiteCommand cmd = new SQLiteCommand(Database.dbConnection);
             cmd.CommandText = text;
-            cmd.Parameters.AddWithValue("@dateTime", dateTime.ToString("dd/MM/yyyy HH:mm"));
-            cmd.Parameters.AddWithValue("@dateTime2", dateTime2.ToString("dd/MM/yyyy HH:mm"));
+            cmd.Parameters.AddWithValue("@dateTime", dateTime.ToString("yyyy-MM-dd HH:mm"));
+            cmd.Parameters.AddWithValue("@dateTime2", dateTime2.ToString("yyyy-MM-dd HH:mm"));
             SQLiteDataReader reader = cmd.ExecuteReader();
             List<Day> days = new List<Day>();
 
@@ -63,7 +63,7 @@ namespace HoursManaging
             {
                 string startTime = reader.GetString(0);
                 string endTime = reader.GetString(1);
-                Day day = new Day(DateTime.ParseExact(startTime, "dd/MM/yyyy HH:mm", CultureInfo.CurrentCulture), DateTime.ParseExact(endTime, "dd/MM/yyyy HH:mm", CultureInfo.CurrentCulture));
+                Day day = new Day(DateTime.ParseExact(startTime, "yyyy-MM-dd HH:mm", CultureInfo.CurrentCulture), DateTime.ParseExact(endTime, "yyyy-MM-dd HH:mm", CultureInfo.CurrentCulture));
                 days.Add(day);
             }
             return days;
@@ -74,11 +74,11 @@ namespace HoursManaging
             DateTime dateTime = start ?? new DateTime(1, 1, 1900);
             DateTime dateTime2 = end ?? new DateTime(1, 1, 2500);
 
-            string text = "select start, sum(hours), sum(minutes) from days where start >= @dateTime and end <= @dateTime2 group by strftime('%W',start) order by start";
+            string text = "select start, sum(hours), sum(minutes) from days where datetime(start) >= @dateTime and datetime(end) <= @dateTime2 group by strftime('%W',start) order by start";
             SQLiteCommand cmd = new SQLiteCommand(Database.dbConnection);
             cmd.CommandText = text;
-            cmd.Parameters.AddWithValue("@dateTime", dateTime.ToString("dd/MM/yyyy HH:mm"));
-            cmd.Parameters.AddWithValue("@dateTime2", dateTime2.ToString("dd/MM/yyyy HH:mm"));
+            cmd.Parameters.AddWithValue("@dateTime", dateTime.ToString("yyyy-MM-dd HH:mm"));
+            cmd.Parameters.AddWithValue("@dateTime2", dateTime2.ToString("yyyy-MM-dd HH:mm"));
             SQLiteDataReader reader = cmd.ExecuteReader();
             List<DaysByWeek> daysByWeeks = new List<DaysByWeek>();
             while(reader.Read())
@@ -96,9 +96,9 @@ namespace HoursManaging
                 DaysByWeek week = new DaysByWeek();
                 week.TotalHours = hours;
                 week.TotalMinutes = minutes;
-                week.Week = DateTime.ParseExact(startTime, "dd/MM/yyyy HH:mm", CultureInfo.CurrentCulture);
+                week.Week = DateTime.ParseExact(startTime, "yyyy-MM-dd HH:mm", CultureInfo.CurrentCulture);
 
-                DateTime startDate = DateTime.ParseExact(startTime, "dd/MM/yyyy HH:mm", CultureInfo.CurrentCulture);
+                DateTime startDate = DateTime.ParseExact(startTime, "yyyy-MM-dd HH:mm", CultureInfo.CurrentCulture);
                 DayOfWeek dayOfWeek = startDate.DayOfWeek;
 
                 DateTime endDate = startDate.AddDays(7-(int)dayOfWeek);
