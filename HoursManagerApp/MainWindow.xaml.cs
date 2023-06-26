@@ -75,6 +75,7 @@ namespace HoursManagerApp
             var column1 = new DataGridTextColumn();
             column1.Header = "Week";
             column1.Binding = new System.Windows.Data.Binding("Week");
+            column1.Binding.StringFormat = "dd/MM/yyyy";
             DataGrid.Columns.Add(column1);
 
             var column2 = new DataGridTextColumn();
@@ -96,13 +97,13 @@ namespace HoursManagerApp
             var column1 = new DataGridTextColumn();
             column1.Header = "Start Time";
             column1.Binding = new System.Windows.Data.Binding("StartTime");
-            column1.Binding.StringFormat = "yyyy/MM/dd HH:mm";
+            column1.Binding.StringFormat = "dd/MM/yyyy HH:mm";
             DataGrid.Columns.Add(column1);
 
             var column2 = new DataGridTextColumn();
             column2.Header = "End Time";
             column2.Binding = new System.Windows.Data.Binding("EndTime");
-            column2.Binding.StringFormat = "yyyy/MM/dd HH:mm";
+            column2.Binding.StringFormat = "dd/MM/yyyy HH:mm";
             DataGrid.Columns.Add(column2);
 
             var column3 = new DataGridTextColumn();
