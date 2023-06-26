@@ -35,12 +35,26 @@ namespace HoursManagerApp
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
-            DateTime dateTime = new DateTime(Date.SelectedDate.Value.Year, Date.SelectedDate.Value.Month, Date.SelectedDate.Value.Day, int.Parse(hour.Text), int.Parse(minute.Text), 0);
-            DateTime dateTime2 = new DateTime(Date.SelectedDate.Value.Year, Date.SelectedDate.Value.Month, Date.SelectedDate.Value.Day, int.Parse(hour2.Text), int.Parse(minute2.Text), 0);
 
-            pr.processAdd(dateTime, dateTime2);
-            this.Close();
+            try
+            {
+                DateTime dateTime = new DateTime(Date.SelectedDate.Value.Year, Date.SelectedDate.Value.Month, Date.SelectedDate.Value.Day, int.Parse(hour.Text), int.Parse(minute.Text), 0);
+                DateTime dateTime2 = new DateTime(Date.SelectedDate.Value.Year, Date.SelectedDate.Value.Month, Date.SelectedDate.Value.Day, int.Parse(hour2.Text), int.Parse(minute2.Text), 0);
+
+                pr.processAdd(dateTime, dateTime2);
+            }
+            catch (Exception error)
+            {
+
+                view.DisplayError(error.Message);
+            }
+            
             view.getFilters();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

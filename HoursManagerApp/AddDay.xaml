@@ -29,7 +29,7 @@
 
         <WrapPanel Grid.Row="2" Margin="5" HorizontalAlignment="Center">
             <Button x:Name="AddBtn" Margin="10" Height="50" Width="70" Click="AddBtn_Click">Add Day</Button>
-            <Button Margin="10" Height="50" Width="70">Cancel</Button>
+            <Button Margin="10" Height="50" Width="70" Click="Button_Click">Cancel</Button>
         </WrapPanel>
     </Grid>
 </Window>
