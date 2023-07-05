@@ -47,6 +47,11 @@ namespace HoursManagerApp
         
         }
 
+        public void processDelete(Day day)
+        {
+            model.Delete(day);
+        }
+
         
     }
 }

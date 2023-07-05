@@ -113,5 +113,10 @@ namespace HoursManaging
 
         }
 
+        public void Delete(Day day)
+        {
+            Days.Delete(day.StartTime);
+        }
+
     }
 }

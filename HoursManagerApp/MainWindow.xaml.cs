@@ -34,7 +34,15 @@ namespace HoursManagerApp
             getFilters();
         }
 
-
+        private void Delete_btn(object sender, RoutedEventArgs e)
+        {
+            Day selectedDay = DataGrid.SelectedItem as Day;
+            if (selectedDay != null)
+            {
+                presenter.processDelete(selectedDay);
+            }
+            getFilters();
+        }
         private void LoadAppData()
         {
             try
@@ -71,6 +79,7 @@ namespace HoursManagerApp
         {
             DataGrid.ItemsSource = daysByWeeks;
             DataGrid.Columns.Clear();
+            DataGrid.ContextMenu.Visibility = Visibility.Hidden;
 
             var column1 = new DataGridTextColumn();
             column1.Header = "Week";
@@ -93,6 +102,8 @@ namespace HoursManagerApp
         {
             DataGrid.ItemsSource = days;
             DataGrid.Columns.Clear();
+
+            DataGrid.ContextMenu.Visibility = Visibility.Visible;
 
             var column1 = new DataGridTextColumn();
             column1.Header = "Start Time";

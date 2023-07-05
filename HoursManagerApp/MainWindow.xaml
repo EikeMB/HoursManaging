@@ -29,6 +29,12 @@
             </StackPanel>
         </Border>
         <DataGrid x:Name="DataGrid" Grid.Row="1" Grid.Column="1" Margin="10"
-                  AutoGenerateColumns="False"></DataGrid>
+                  AutoGenerateColumns="False">
+            <DataGrid.ContextMenu>
+                <ContextMenu Visibility="Hidden">
+                    <MenuItem Click="Delete_btn" Header="Delete"></MenuItem>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+        </DataGrid>
     </Grid>
 </Window>
