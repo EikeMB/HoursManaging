@@ -60,7 +60,11 @@ namespace HoursManagerApp
 
 
 
-            view.getFilters();
+        }
+
+        public List<Day> secondWindowGetDays(DateTime? start, DateTime? end)
+        {
+            return model.GetDaysByWeek(start, end)[0].Days;
         }
         
     }

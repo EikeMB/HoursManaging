@@ -1,0 +1,21 @@
+﻿<Window x:Class="HoursManagerApp.WeekView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HoursManagerApp"
+        mc:Ignorable="d"
+        Title="WeekView" Height="450" Width="800">
+    <Grid>
+        <DataGrid x:Name="dtgd" Margin="10"
+                  AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.ContextMenu>
+                <ContextMenu x:Name="cm">
+                    <MenuItem Click="Delete_btn" Header="Delete"></MenuItem>
+                    <MenuItem Click="Update_btn" Header="Update"></MenuItem>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+            
+        </DataGrid>
+    </Grid>
+</Window>

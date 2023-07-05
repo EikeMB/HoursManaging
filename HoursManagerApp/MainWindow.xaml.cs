@@ -53,6 +53,7 @@ namespace HoursManagerApp
 
                 updateWindow.ShowDialog();
             }
+            getFilters();
         }
         private void LoadAppData()
         {
@@ -173,6 +174,20 @@ namespace HoursManagerApp
             else
             {
                 cm.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if(weekly.IsChecked == true)
+            {
+                DaysByWeek daysByWeek = DataGrid.SelectedItem as DaysByWeek;
+
+                WeekView weekWindow = new WeekView(this, ref fileName, ref folderName, ref presenter, daysByWeek);
+
+                weekWindow.ShowDialog();
+
+                getFilters();
             }
         }
     }

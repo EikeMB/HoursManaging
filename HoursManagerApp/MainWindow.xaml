@@ -29,7 +29,9 @@
             </StackPanel>
         </Border>
         <DataGrid x:Name="DataGrid" Grid.Row="1" Grid.Column="1" Margin="10"
-                  AutoGenerateColumns="False" MouseRightButtonDown="DataGrid_MouseRightButtonDown">
+                  AutoGenerateColumns="False" 
+                  IsReadOnly="True"
+                  MouseRightButtonDown="DataGrid_MouseRightButtonDown" MouseDoubleClick="DataGrid_MouseDoubleClick">
             <DataGrid.ContextMenu>
                 <ContextMenu x:Name="cm">
                     <MenuItem Click="Delete_btn" Header="Delete"></MenuItem>
