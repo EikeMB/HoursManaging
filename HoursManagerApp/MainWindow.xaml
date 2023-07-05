@@ -33,6 +33,7 @@
             <DataGrid.ContextMenu>
                 <ContextMenu Visibility="Hidden">
                     <MenuItem Click="Delete_btn" Header="Delete"></MenuItem>
+                    <MenuItem Click="Update_btn" Header="Update"></MenuItem>
                 </ContextMenu>
             </DataGrid.ContextMenu>
         </DataGrid>

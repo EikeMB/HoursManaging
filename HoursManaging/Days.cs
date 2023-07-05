@@ -40,7 +40,7 @@ namespace HoursManaging
             Day day = new Day(start, end);
             SQLiteCommand cmd = new SQLiteCommand(conn);
 
-            cmd.CommandText = "update days set start = @start, end = @end, hours = @hours, minute = @minutes, breakTime = @breakTime where start = @ostart";
+            cmd.CommandText = "update days set start = @start, end = @end, hours = @hours, minutes = @minutes, breakTime = @breakTime where start = @ostart";
             cmd.Parameters.AddWithValue("@start", day.StartTime.ToString("yyyy-MM-dd HH:mm"));
             cmd.Parameters.AddWithValue("@end", day.EndTime.ToString("yyyy-MM-dd HH:mm"));
             cmd.Parameters.AddWithValue("@hours", day.TotalHours);

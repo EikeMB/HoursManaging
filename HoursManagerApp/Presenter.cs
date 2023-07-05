@@ -49,9 +49,19 @@ namespace HoursManagerApp
 
         public void processDelete(Day day)
         {
-            model.Delete(day);
+            model.Days.Delete(day.StartTime);
         }
 
+        public void processUpdate(Day day, DateTime st, DateTime en)
+        {
+            
+
+            model.Days.UpdateProperties(day.StartTime, st, en);
+
+
+
+            view.getFilters();
+        }
         
     }
 }

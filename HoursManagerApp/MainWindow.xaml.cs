@@ -43,6 +43,17 @@ namespace HoursManagerApp
             }
             getFilters();
         }
+
+        private void Update_btn(object sender, RoutedEventArgs e)
+        {
+            Day selectedDay = DataGrid.SelectedItem as Day;
+            if (selectedDay != null)
+            {
+                UpdateDay updateWindow = new UpdateDay(this, ref fileName, ref folderName, ref presenter, selectedDay);
+
+                updateWindow.ShowDialog();
+            }
+        }
         private void LoadAppData()
         {
             try
