@@ -90,7 +90,6 @@ namespace HoursManagerApp
         {
             DataGrid.ItemsSource = daysByWeeks;
             DataGrid.Columns.Clear();
-            DataGrid.ContextMenu.Visibility = Visibility.Hidden;
 
             var column1 = new DataGridTextColumn();
             column1.Header = "Week";
@@ -114,7 +113,6 @@ namespace HoursManagerApp
             DataGrid.ItemsSource = days;
             DataGrid.Columns.Clear();
 
-            DataGrid.ContextMenu.Visibility = Visibility.Visible;
 
             var column1 = new DataGridTextColumn();
             column1.Header = "Start Time";
@@ -166,5 +164,16 @@ namespace HoursManagerApp
             getFilters();
         }
 
+        private void DataGrid_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if(weekly.IsChecked != true)
+            {
+                cm.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                cm.Visibility = Visibility.Hidden;
+            }
+        }
     }
 }
