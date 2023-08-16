@@ -55,7 +55,7 @@ namespace HoursManaging
             SQLiteCommand cmd = new SQLiteCommand(Database.dbConnection);
             cmd.CommandText = text;
             cmd.Parameters.AddWithValue("@dateTime", dateTime.ToString("yyyy-MM-dd HH:mm"));
-            cmd.Parameters.AddWithValue("@dateTime2", dateTime2.ToString("yyyy-MM-dd HH:mm"));
+            cmd.Parameters.AddWithValue("@dateTime2", new DateTime(dateTime2.Year, dateTime2.Month, dateTime2.Day, 23, 59, 59));
             SQLiteDataReader reader = cmd.ExecuteReader();
             List<Day> days = new List<Day>();
 
