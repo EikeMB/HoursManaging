@@ -9,7 +9,7 @@
   <Identity
     Name="38edfb12-7461-4d8e-9908-68d5151300d8"
     Publisher="CN=eike"
-    Version="1.0.2.0" />
+    Version="1.0.3.0" />
 
   <Properties>
     <DisplayName>ManagerInstaller</DisplayName>
